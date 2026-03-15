@@ -14,7 +14,8 @@ st.set_page_config(page_title='Superstore Dashboard',
 
 # reading the data from excel file
 df = pd.read_excel("FD DATA.xlsx")
-df1 = pd.read_csv("Infoware data.csv")
+df1 = pd.read_excel("Infoware data.xlsx")
+#df1 = pd.read_csv("Infoware data.csv")
 # remove hidden spaces from column names
 df1.columns = df1.columns.str.strip()
 st.markdown('<style>div.block-container{padding-top:2rem;}</style>', unsafe_allow_html=True)
@@ -42,6 +43,21 @@ st.markdown("<style>div.block-container{padding-top:3rem;}</style>", unsafe_allo
 with col2:
     st.markdown(html_title, unsafe_allow_html=True)
 
+# Clean Next of kin column
+df1["N_K_Relationship"] = (
+    df1["N_K_Relationship"]
+    .astype(str)
+    .str.strip()
+    .str.upper()
+)
+df1["N_K_Relationship"] = df1["N_K_Relationship"].replace({
+    "WIFE": "SPOUSE",
+    "HUSBAND": "SPOUSE",
+    "BROTHER": "SIBLING",
+    "SISTER": "SIBLING",
+    "GURDIAN": "GUARDIAN"
+})
+
 
 # --- KPI Section ---
 
@@ -60,7 +76,7 @@ top_city_count = city_counts.iloc[0]
 accounts_today = 6
 male_investors = df1[df1["Gender"] == "M"].shape[0]
 female_investors = df1[df1["Gender"] == "F"].shape[0]
-top_nok = df1["N_K_Relationship"].mode()[0]
+top_nok = df1["N_K_relationship"].mode()[0]
 top_relationship_count = relationship_counts.iloc[0]
 top_dividend = df1["Dividend Disposal"].mode()[0]
 top_dividend_count = df1["Dividend Disposal"].value_counts().iloc[0]
@@ -328,7 +344,7 @@ with col7:
     st.plotly_chart(fig_age, use_container_width=True)
 with col8:
     # Count next-of-kin relationships
-    nk_counts = df1["N_K_Relationship"].value_counts().reset_index()
+    nk_counts = df1["N_K_relationship"].value_counts().reset_index()
     nk_counts.columns = ["Relationship", "Total"]
     
     # Show only top 5 relationships 
@@ -348,11 +364,11 @@ with col8:
     )
 
     # make text appear inside bars 
-    fig_nk.update_traces(textposition="outside")
+    fig_nk.update_traces(textposition="inside")
 
     st.plotly_chart(fig_nk, use_container_width=True)
 
-col9, col10, col11 = st.columns([0.1, 0.8, 0.1])
+col9, col10, col11 = st.columns([0.2, 0.8, 0.2])
 
 with col10:
 
