@@ -24,9 +24,10 @@ image = Image.open("FDLOGO.jfif")
 col1, col2 = st.columns([0.1,0.9])
 with col1:
     st.image(image, width=100)
-    st.caption("Source: CDSC, FD | Latest available data")
- 
-
+    st.markdown(
+    "<p style='font-size:13px; color:gray'><b>Source:</b> CDSC, Francis Drummond & Co. Ltd | Latest available data</p>",
+    unsafe_allow_html=True
+    )
 html_title = """
     <style>
     .title-text{
@@ -38,7 +39,6 @@ html_title = """
     </style>
     <center><h1 class= "title-text">Kenya Pipeline Company IPO - Insights from Francis Drummond & Co. Ltd Investor Data</h1></center>"""
 st.markdown("<style>div.block-container{padding-top:3rem;}</style>", unsafe_allow_html=True)
-
 
 with col2:
     st.markdown(html_title, unsafe_allow_html=True)
@@ -58,7 +58,6 @@ df1["N_K_Relationship"] = df1["N_K_Relationship"].replace({
     "GURDIAN": "GUARDIAN"
 })
 
-
 # --- KPI Section ---
 
 # Calculate KPIs
@@ -69,18 +68,19 @@ Youngest_Investor = df1["Age"].min()
 Oldest_Investor = df1["Age"].max()
 total_investors = len(df1)
 city_counts = df1["City"].value_counts()
-relationship_counts = df1["N_K_Relationship"].value_counts()
-
+relationship_counts = df1["N_K_relationship"].value_counts()
 top_city = city_counts.index[0]
 top_city_count = city_counts.iloc[0]
-accounts_today = 6
-male_investors = df1[df1["Gender"] == "M"].shape[0]
-female_investors = df1[df1["Gender"] == "F"].shape[0]
+accounts_today = 5
+df1["Gender_clean"] = df1["Gender"].astype(str).str.strip().str.upper()
+male_investors = df1[df1["Gender_clean"] == "M"].shape[0]
+female_investors = df1[df1["Gender_clean"] == "F"].shape[0]
 top_nok = df1["N_K_relationship"].mode()[0]
 top_relationship_count = relationship_counts.iloc[0]
-top_dividend = df1["Dividend Disposal"].mode()[0]
-top_dividend_count = df1["Dividend Disposal"].value_counts().iloc[0]
-
+top_dividend = df1["dividend_Disposal"].mode()[0]
+top_dividend_count = df1["dividend_Disposal"].value_counts().iloc[0]
+print("These are the results")
+print(df1["Gender_clean"].value_counts(dropna=False))
 
 
 # Display KPIs in four columns
@@ -197,7 +197,7 @@ with kpi12:
     st.markdown(
         f"""
        <div style="font-size:18px; font-weight:bold;color:#3366FF">💵 Most Preferred Dividend Disposal</div>
-         <div style="font-size:22px; font-weight:800; color:#black;">{top_dividend} - {top_relationship_count}</div>
+         <div style="font-size:22px; font-weight:800; color:#black;">{top_dividend} - {top_dividend_count}</div>
          <div style="font-size:14px; color:gray;">The relationship type most frequently listed as next of kin by investors.</div>
         """,
         unsafe_allow_html=True
@@ -218,7 +218,6 @@ with col3:
         hole=0.3,
         title="Investors by Region"
 )
-
         fig_donut.update_traces(
         textposition="inside",
         textinfo="percent+label"
