@@ -487,3 +487,19 @@ with col10:
 
     # Keep centered inside the column
     st.pyplot(fig)
+
+
+bins = [0, 18, 25, 35, 45, 60, 120]
+labels = ["Under 18", "18–25", "26–35", "36–45", "46–60", "60+"]
+
+df1["Age_Group"] = pd.cut(df1["Age"], bins=bins, labels=labels)
+print(df1[["Age", "Age_Group"]].head(20))
+print(list(df1.columns))
+cols = df1.columns.tolist()
+
+cols.remove("Age_Group")
+cols.insert(cols.index("Age") + 1, "Age_Group")
+
+df1 = df1[cols]
+df1.to_csv("FD_DATA_updated.csv", index=False)
+print("sucessful")
