@@ -3,16 +3,14 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 import plotly.express as px
-import plotly.graph_objects as go
-import geopandas as gpd
 import matplotlib.pyplot as plt
-from geodatasets import get_path
-st.set_page_config(page_title='Superstore Dashboard', 
-                   page_icon=':chart_with_upwards_trend:', 
+
+
+st.set_page_config(page_title='Superstore Dashboard',
+                   page_icon=':chart_with_upwards_trend:',
                    layout='wide')
 
-
-# reading the data from excel file
+# reading the data from Excel file
 df = pd.read_excel("FD DATA.xlsx")
 df1 = pd.read_excel("Infoware data.xlsx")
 #df1 = pd.read_csv("Infoware data.csv")
@@ -21,12 +19,13 @@ df1.columns = df1.columns.str.strip()
 st.markdown('<style>div.block-container{padding-top:2rem;}</style>', unsafe_allow_html=True)
 image = Image.open("FDLOGO.jfif")
 
-col1, col2 = st.columns([0.1,0.9])
+col1, col2 = st.columns([0.1, 0.9])
 with col1:
     st.image(image, width=100)
     st.markdown(
-    "<p style='font-size:13px; color:gray'><b>Source:</b> CDSC, Francis Drummond & Co. Ltd | Latest available data</p>",
-    unsafe_allow_html=True
+        "<p style='font-size:13px; "
+        "color:gray'><b>Source:</b> CDSC, Francis Drummond & Co. Ltd | Latest available data</p>",
+        unsafe_allow_html=True
     )
 html_title = """
     <style>
@@ -34,10 +33,11 @@ html_title = """
     font-weight:bold;
     padding:5px;
     border-radius:6px;
-    </stylele
+    </style>
     }
     </style>
-    <center><h1 class= "title-text">Kenya Pipeline Company IPO - Insights from Francis Drummond & Co. Ltd Investor Data</h1></center>"""
+    <center><h1 class= "title-text">Kenya Pipeline Company IPO - Insights from Francis Drummond & Co. Ltd Investor Data
+    </h1></center>"""
 st.markdown("<style>div.block-container{padding-top:3rem;}</style>", unsafe_allow_html=True)
 
 with col2:
@@ -55,15 +55,15 @@ df1["N_K_Relationship"] = df1["N_K_Relationship"].replace({
     "HUSBAND": "SPOUSE",
     "BROTHER": "SIBLING",
     "SISTER": "SIBLING",
-    "GURDIAN": "GUARDIAN"
+    "GUARDIAN": "GUARDIAN"
 })
 
 # --- KPI Section ---
 
 # Calculate KPIs
-Accounts_created = df["ACCOUNT_OPENED"].sum()*2
+Accounts_created = df["ACCOUNT_OPENED"].sum() * 2
 CDSC_Account_opened = df["CDS_ACCOUNT_OPENED"].sum()
-Average_Investor_Age = df1["Age"].mean() 
+Average_Investor_Age = df1["Age"].mean()
 Youngest_Investor = df1["Age"].min()
 Oldest_Investor = df1["Age"].max()
 total_investors = len(df1)
@@ -82,7 +82,6 @@ top_dividend_count = df1["dividend_Disposal"].value_counts().iloc[0]
 print("These are the results")
 print(df1["Gender_clean"].value_counts(dropna=False))
 
-
 # Display KPIs in four columns
 kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 with kpi1:
@@ -100,7 +99,8 @@ with kpi2:
         f"""
         <div style="font-size:18px; font-weight:bold; color:#3366FF">🧑➕ Account Opened on PERAGO</div>
         <div style="font-size:26px; font-weight:900; color:black;">{Accounts_created:,.0f}</div>
-        <div style="font-size:14px; color:gray;">Number of investor accounts successfully opened through the PERAGO onboarding system</div>
+        <div style="font-size:14px; 
+        color:gray;">Number of investor accounts successfully opened through the PERAGO onboarding system</div>
         """,
         unsafe_allow_html=True
     )
@@ -110,7 +110,8 @@ with kpi3:
         f"""
         <div style="font-size:18px; font-weight:bold;color:#3366FF"> 🆔 CDS Account Number Created </div>
          <div style="font-size:26px; font-weight:900; color:#black;">{total_investors:,.0f}</div>
-         <div style="font-size:14px; color:gray;">Number of clients successfully assigned new CDS account numbers..</div>
+         <div style="font-size:14px; 
+         color:gray;">Number of clients successfully assigned new CDS account numbers..</div>
         """,
         unsafe_allow_html=True
     )
@@ -124,15 +125,14 @@ with kpi4:
         unsafe_allow_html=True
     )
 
-
-
 kpi5, kpi6, kpi7, kpi8 = st.columns(4)
 with kpi5:
     st.markdown(
         f"""
        <div style="font-size:18px; font-weight:bold;color:#3366FF"> 🧒 Youngest Investor </div>
          <div style="font-size:26px; font-weight:900; color:#black;">{Youngest_Investor:,.0f}</div>
-         <div style="font-size:14px; color:gray;">Age of the youngest investor registered through CDS account openings.</div>
+         <div style="font-size:14px;
+          color:gray;">Age of the youngest investor registered through CDS account openings.</div>
         """,
         unsafe_allow_html=True
     )
@@ -189,7 +189,8 @@ with kpi11:
         f"""
        <div style="font-size:18px; font-weight:bold;color:#3366FF">👨‍👩‍👧 Most Common Next of Kin Relationship</div>
          <div style="font-size:23px; font-weight:800; color:#black;">{top_nok} - {top_relationship_count}</div>
-         <div style="font-size:14px; color:gray;">The relationship type most frequently listed as next of kin by investors.</div>
+         <div style="font-size:14px; 
+         color:gray;">The relationship type most frequently listed as next of kin by investors.</div>
         """,
         unsafe_allow_html=True
     )
@@ -198,37 +199,38 @@ with kpi12:
         f"""
        <div style="font-size:18px; font-weight:bold;color:#3366FF">💵 Most Preferred Dividend Disposal</div>
          <div style="font-size:22px; font-weight:800; color:#black;">{top_dividend} - {top_dividend_count}</div>
-         <div style="font-size:14px; color:gray;">The relationship type most frequently listed as next of kin by investors.</div>
+         <div style="font-size:14px; 
+         color:gray;">The relationship type most frequently listed as next of kin by investors.</div>
         """,
         unsafe_allow_html=True
     )
 col3, col4, col5 = st.columns(3)
 # --- Donut Chart: Investors by Region ---
 with col3:
-        region_counts = (
+    region_counts = (
         df1.dropna(subset=["Region"])
         .groupby("Region")
         .size()
         .reset_index(name="Total")
-)
-        fig_donut = px.pie(
+    )
+    fig_donut = px.pie(
         region_counts,
         names="Region",
         values="Total",
         hole=0.3,
         title="Investors by Region"
-)
-        fig_donut.update_traces(
+    )
+    fig_donut.update_traces(
         textposition="inside",
         textinfo="percent+label"
-)
+    )
 
-        fig_donut.update_layout(
+    fig_donut.update_layout(
         showlegend=True,
         title_x=0
-)
+    )
 
-        st.plotly_chart(fig_donut, use_container_width=True)
+    st.plotly_chart(fig_donut, use_container_width=True)
 
 with col4:
     gender_counts = (
@@ -243,7 +245,7 @@ with col4:
         names="Gender",
         values="Total",
         hole=0.4,
-        title="Investors by Gender",  
+        title="Investors by Gender",
         color_discrete_map={
             "Male": "#1f77b4",
             "Female": "#e377c2"
@@ -269,7 +271,7 @@ with col5:
         .size()
         .reset_index(name="Total")
         .sort_values("Total", ascending=False)
-        .head(5)   
+        .head(5)
     )
 
     fig_city = px.pie(
@@ -292,7 +294,7 @@ with col5:
 
     st.plotly_chart(fig_city, use_container_width=True)
 
-col6, col7, col8  = st.columns(3)
+col6, col7, col8 = st.columns(3)
 with col6:
     df1_total = df1.groupby("Region").size().reset_index(name="Total")
     fig = px.bar(
@@ -304,10 +306,10 @@ with col6:
         hover_data=["Total"],
         template="gridon",
         height=500,
-        color_discrete_sequence=["#3884ff"] 
+        color_discrete_sequence=["#3884ff"]
     )
     fig.update_layout(
-         yaxis_title="Number of Investors"
+        yaxis_title="Number of Investors"
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -330,7 +332,7 @@ with col7:
         line_dash="dash",
         line_color="black",
         line_width=3,
-        annotation_text=f"Avg Age: {round(avg_age,1)}",
+        annotation_text=f"Avg Age: {round(avg_age, 1)}",
         annotation_position="top right"
     )
 
@@ -345,7 +347,7 @@ with col8:
     # Count next-of-kin relationships
     nk_counts = df1["N_K_relationship"].value_counts().reset_index()
     nk_counts.columns = ["Relationship", "Total"]
-    
+
     # Show only top 5 relationships 
     nk_counts = nk_counts.head(5)
 
@@ -367,12 +369,10 @@ with col8:
 
     st.plotly_chart(fig_nk, use_container_width=True)
 
-col9, col10, col11 = st.columns([0.2, 0.8, 0.2])
+col9, col10, col11 = st.columns([0.3, 0.8, 0.3])
 
 with col10:
-
     import geopandas as gpd
-    import matplotlib.pyplot as plt
     import pandas as pd
     from matplotlib.colors import LinearSegmentedColormap
 
@@ -403,28 +403,30 @@ with col10:
         kenya = kenya[["NAME_1", "geometry"]].rename(columns={"NAME_1": "County"})
         return kenya
 
+
     kenya_counties = load_kenya_counties()
 
     # -------------------------------
     # County → Region mapping
     # -------------------------------
     region_lookup = pd.DataFrame({
-        "County": ["Nairobi","Mombasa","Kwale","Kilifi","Tana River","Lamu","Taita Taveta",
-                   "Machakos","Kitui","Makueni","Kisii","Nyamira","Kisumu","Siaya","Homa Bay","Migori",
-                   "Kakamega","Vihiga","Bungoma","Busia","Trans Nzoia",
-                   "Nyeri","Kirinyaga","Murang'a","Kiambu","Nyandarua","Meru","Embu","Tharaka-Nithi","Laikipia",
-                   "Nakuru","Uasin Gishu","Nandi","Baringo","Elgeyo-Marakwet","West Pokot","Turkana",
-                   "Samburu","Narok","Kajiado","Kericho","Bomet"],
+        "County": ["Nairobi", "Mombasa", "Kwale", "Kilifi", "Tana River", "Lamu", "Taita Taveta",
+                   "Machakos", "Kitui", "Makueni", "Kisii", "Nyamira", "Kisumu", "Siaya", "Homa Bay", "Migori",
+                   "Kakamega", "Vihiga", "Bungoma", "Busia", "Trans Nzoia",
+                   "Nyeri", "Kirinyaga", "Murang'a", "Kiambu", "Nyandarua", "Meru", "Embu", "Tharaka-Nithi", "Laikipia",
+                   "Nakuru", "Uasin Gishu", "Nandi", "Baringo", "Elgeyo-Marakwet", "West Pokot", "Turkana",
+                   "Samburu", "Narok", "Kajiado", "Kericho", "Bomet"],
 
         "Region": ["Nairobi",
-                   "Coast","Coast","Coast","Coast","Coast","Coast",
-                   "Ukambani","Ukambani","Ukambani",
-                   "Kisii","Kisii",
-                   "Luo Nyanza","Luo Nyanza","Luo Nyanza","Luo Nyanza",
-                   "Western","Western","Western","Western","Western",
-                   "Mt Kenya","Mt Kenya","Mt Kenya","Mt Kenya","Mt Kenya","Mt Kenya","Mt Kenya","Mt Kenya","Mt Kenya",
-                   "Rift Valley","Rift Valley","Rift Valley","Rift Valley","Rift Valley","Rift Valley",
-                   "Rift Valley","Rift Valley","Rift Valley","Rift Valley","Rift Valley","Rift Valley"]
+                   "Coast", "Coast", "Coast", "Coast", "Coast", "Coast",
+                   "Ukambani", "Ukambani", "Ukambani",
+                   "Kisii", "Kisii",
+                   "Luo Nyanza", "Luo Nyanza", "Luo Nyanza", "Luo Nyanza",
+                   "Western", "Western", "Western", "Western", "Western",
+                   "Mt Kenya", "Mt Kenya", "Mt Kenya", "Mt Kenya", "Mt Kenya", "Mt Kenya", "Mt Kenya", "Mt Kenya",
+                   "Mt Kenya",
+                   "Rift Valley", "Rift Valley", "Rift Valley", "Rift Valley", "Rift Valley", "Rift Valley",
+                   "Rift Valley", "Rift Valley", "Rift Valley", "Rift Valley", "Rift Valley", "Rift Valley"]
     })
 
     # -------------------------------
@@ -453,7 +455,7 @@ with col10:
     # -------------------------------
     # Plot
     # -------------------------------
-    fig, ax = plt.subplots(figsize=(6,6))
+    fig, ax = plt.subplots(figsize=(6, 6))
 
     kenya_counties.plot(ax=ax, color="lightgrey", edgecolor="white", linewidth=0.3)
 
@@ -464,7 +466,7 @@ with col10:
         edgecolor="white",
         linewidth=0.5,
         legend=True,
-        legend_kwds={"label":"Number of Investors","shrink":0.6}
+        legend_kwds={"label": "Number of Investors", "shrink": 0.6}
     )
 
     for _, row in map_data.iterrows():
@@ -477,10 +479,10 @@ with col10:
             fontsize=6
         )
         ax.set_title(
-        "Distribution of KPC IPO Subscribers by Region",
-        fontsize=5,
-        fontweight="bold"
-    )
+            "Distribution of KPC IPO Subscribers by Region",
+            fontsize=5,
+            fontweight="bold"
+        )
     ax.axis("off")
 
     # Keep centered inside the column
