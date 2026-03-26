@@ -34,9 +34,9 @@ html_title = """
     padding:5px;
     border-radius:6px;
     </style>
-    }
     </style>
-    <center><h1 class= "title-text">Kenya Pipeline Company IPO - Insights from Francis Drummond & Co. Ltd Investor Data
+    <center><h1 class= "title-text">
+    Kenya Pipeline Company IPO - Insights from Francis Drummond & Co. Ltd Investor Data
     </h1></center>"""
 st.markdown("<style>div.block-container{padding-top:3rem;}</style>", unsafe_allow_html=True)
 
