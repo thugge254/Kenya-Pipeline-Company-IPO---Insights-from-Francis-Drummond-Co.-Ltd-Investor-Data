@@ -88,7 +88,7 @@ with kpi1:
     st.markdown(
         f"""
         <div style="font-size:18px; font-weight:bold; color:#3366FF">👨‍👩‍👧‍👦 Total Investors</div>
-        <div style="font-size:26px; font-weight:900; color:black;">{total_investors:,.0f}</div>
+        <div style="font-size:26px; font-weight:900; color:#black;">{total_investors:,.0f}</div>
         <div style="font-size:14px; color:gray;">Total number of investors who have participated in the IPO.</div>
         """,
         unsafe_allow_html=True
@@ -98,7 +98,7 @@ with kpi2:
     st.markdown(
         f"""
         <div style="font-size:18px; font-weight:bold; color:#3366FF">🧑➕ Account Opened on PERAGO</div>
-        <div style="font-size:26px; font-weight:900; color:black;">{Accounts_created:,.0f}</div>
+        <div style="font-size:26px; font-weight:900; color:#black;">{Accounts_created:,.0f}</div>
         <div style="font-size:14px; 
         color:gray;">Number of investor accounts successfully opened through the PERAGO onboarding system</div>
         """,
