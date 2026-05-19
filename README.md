@@ -6,7 +6,7 @@ The dashboard provides a comprehensive view of investor participation across Ken
 
 ### 📊 Project Overview
 
-This project analyzes IPO investor data to answer key business questions such as:
+**This project analyzes IPO investor data to answer key business questions such as:R**
 
 - Who are the investors participating in the IPO?
 - How are investors distributed across regions and cities?
@@ -104,4 +104,20 @@ cd kpc-ipo-dashboard`
 |       
 \---Images
         FDLOGO.jfif
-        
+```
+### Author
+Moses Chege
+
+#### Data Analyst | SQL • Python • R • Excel | Turning Data into Actionable Insights
+### Skills
+- Python
+- SQL
+- Data Cleaning 
+- Streamlit
+- Data Visualization
+
+#### GitHub Repository:
+https://github.com/thugge254/Kenya-Pipeline-Company-IPO---Insights-from-Francis-Drummond-Co.-Ltd-Investor-Data
+
+### License
+This project is open-source and available under the MIT License.
