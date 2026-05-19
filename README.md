@@ -68,10 +68,40 @@ cd kpc-ipo-dashboard`
 `streamlit run app.py`
 
 ### 📁 Project Structure
-`├── app.py
-├── data/
-│   └── investor_data.csv
-├── assets/
-│   └── images/
-├── requirements.txt
-└── README.md`
+```├── app.py
+|   app.py
+|   packages.txt
+|   README.md
+|   requirements.txt
+|   
++---.devcontainer
+|       devcontainer.json
+|       
++---.idea
+|   |   .gitignore
+|   |   FD DASHBOARD.iml
+|   |   misc.xml
+|   |   modules.xml
+|   |   vcs.xml
+|   |   workspace.xml
+|   |   
+|   \---inspectionProfiles
+|           profiles_settings.xml
+|           
++---.vscode
+|       settings.json
+|       
++---assets
+|       distribution_charts.png
+|       donut_chart.png
+|       IPO_subscription.png
+|       KPIs.png
+|       
++---data
+|       FD DATA.xlsx
+|       FD_DATA_updated.csv
+|       Infoware data.xlsx
+|       
+\---Images
+        FDLOGO.jfif
+        
