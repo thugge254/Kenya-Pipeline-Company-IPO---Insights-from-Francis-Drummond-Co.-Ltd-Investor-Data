@@ -10,6 +10,38 @@ st.set_page_config(page_title='Superstore Dashboard',
                    page_icon=':chart_with_upwards_trend:',
                    layout='wide')
 
+st.markdown("""
+    <style>
+        /* Main container */
+        .block-container {
+            padding-top: 0rem !important;
+            margin-top: 0rem !important;
+        }
+
+        /* Remove app top spacing */
+        .stApp {
+            margin-top: 0rem;
+            padding-top: 0rem;
+        }
+
+        /* Hide Streamlit header */
+        header {
+            visibility: hidden;
+        }
+
+        /* Hide toolbar */
+        .stToolbar {
+            display: none;
+        }
+
+        /* Remove title spacing */
+        h1 {
+            margin-top: 0px !important;
+            padding-top: 0px !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # reading the data from Excel file
 df = pd.read_excel("FD DATA.xlsx")
 df1 = pd.read_excel("Infoware data.xlsx")
