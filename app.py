@@ -43,9 +43,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # reading the data from Excel file
-df = pd.read_excel("FD DATA.xlsx")
-df1 = pd.read_excel("Infoware data.xlsx")
-#df1 = pd.read_csv("Infoware data.csv")
+df = pd.read_excel("data/FD DATA.xlsx")
+df1 = pd.read_excel("data/Infoware data.xlsx")
+
 # remove hidden spaces from column names
 df1.columns = df1.columns.str.strip()
 st.markdown('<style>div.block-container{padding-top:2rem;}</style>', unsafe_allow_html=True)
