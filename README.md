@@ -30,6 +30,7 @@ This project analyzes IPO investor data to answer key business questions such as
 - Histogram of investor age distribution
 - Bar chart of investors by region
 - Top 10 cities by number of investors
+  
 ### 🗺️ Geographic Insights
 Interactive Kenya map showing IPO subscription distribution across regions/counties
 
@@ -43,16 +44,16 @@ Interactive Kenya map showing IPO subscription distribution across regions/count
 ## 📷 Dashboard Preview
 
 ### 📊 KPI Dashboard
-![KPIs](assets/KPIs/kpis.png)
+![KPIs](assets/KPIs.png)
 
 ### 🍩 Donut Charts
-![Donut Charts](assets/donut_chart/donut_chart.png)
+![Donut Charts](assets/donut_chart.png)
 
 ### 📈 Distribution Charts
-![Distribution Charts](assets/distribution_charts/distribution_charts.png)
+![Distribution Charts](assets/distribution_charts.png)
 
 ### 🏙️ IPO Subscription Map
-![IPO Subscription](assets/IPO_subscription/IPO_subscription.png)
+![IPO Subscription](assets/IPO_subscription.png)
 
 
 ### 🚀 Getting Started
