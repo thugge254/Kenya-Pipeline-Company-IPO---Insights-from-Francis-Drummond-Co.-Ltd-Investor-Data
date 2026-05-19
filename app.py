@@ -9,6 +9,37 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title='Superstore Dashboard',
                    page_icon=':chart_with_upwards_trend:',
                    layout='wide')
+st.markdown("""
+    <style>
+        /* Main container */
+        .block-container {
+            padding-top: 0rem !important;
+            margin-top: 0rem !important;
+        }
+
+        /* Remove app top spacing */
+        .stApp {
+            margin-top: 0rem;
+            padding-top: 0rem;
+        }
+
+        /* Hide Streamlit header */
+        header {
+            visibility: hidden;
+        }
+
+        /* Hide toolbar */
+        .stToolbar {
+            display: none;
+        }
+
+        /* Remove title spacing */
+        h1 {
+            margin-top: 0px !important;
+            padding-top: 0px !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # reading the data from Excel file
 df = pd.read_excel("FD DATA.xlsx")
@@ -64,26 +95,8 @@ df1["N_K_Relationship"] = df1["N_K_Relationship"].replace({
 # --- KPI Section ---
 
 # Calculate KPIs
-Accounts_created = df["ACCOUNT_OPENED"].sum() * 2
-CDSC_Account_opened = df["CDS_ACCOUNT_OPENED"].sum()
-Average_Investor_Age = df1["Age"].mean()
-Youngest_Investor = df1["Age"].min()
-Oldest_Investor = df1["Age"].max()
-total_investors = len(df1)
-city_counts = df1["City"].value_counts()
-relationship_counts = df1["N_K_relationship"].value_counts()
-top_city = city_counts.index[0]
-top_city_count = city_counts.iloc[0]
-accounts_today = 5
-df1["Gender_clean"] = df1["Gender"].astype(str).str.strip().str.upper()
-male_investors = df1[df1["Gender_clean"] == "M"].shape[0]
-female_investors = df1[df1["Gender_clean"] == "F"].shape[0]
-top_nok = df1["N_K_relationship"].mode()[0]
-top_relationship_count = relationship_counts.iloc[0]
-top_dividend = df1["dividend_Disposal"].mode()[0]
-top_dividend_count = df1["dividend_Disposal"].value_counts().iloc[0]
-print("These are the results")
-print(df1["Gender_clean"].value_counts(dropna=False))
+Accounts_created = df["loan_amount"].sum()
+
 
 # Display KPIs in four columns
 kpi1, kpi2, kpi3, kpi4 = st.columns(4)
