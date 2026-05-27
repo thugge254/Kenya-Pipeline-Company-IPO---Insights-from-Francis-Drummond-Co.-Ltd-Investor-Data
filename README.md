@@ -1,4 +1,4 @@
-# 🇰🇪 Kenya Pipeline Company IPO – Investor Insights Dashboard
+# Kenya Pipeline Company IPO – Investor Insights Dashboard
 
 An interactive data analytics dashboard built to explore investor behavior, demographics, and IPO subscription patterns for the **Kenya Pipeline Company IPO**, using investor data from Francis Drummond & Co. Ltd.
 

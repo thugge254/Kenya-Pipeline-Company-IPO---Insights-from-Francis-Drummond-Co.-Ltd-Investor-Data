@@ -49,31 +49,30 @@ df1 = pd.read_excel("data/Infoware data.xlsx")
 # remove hidden spaces from column names
 df1.columns = df1.columns.str.strip()
 st.markdown('<style>div.block-container{padding-top:2rem;}</style>', unsafe_allow_html=True)
-image = Image.open("FDLOGO.jfif")
+image = Image.open("images/FDLOGO.jfif")
 
-col1, col2 = st.columns([0.1, 0.9])
+col1, col2 = st.columns([0.2, 0.8])
+
 with col1:
     st.image(image, width=100)
     st.markdown(
-        "<p style='font-size:13px; "
+        "<p style='font-size:15px; font-weight:bold;"
         "color:gray'><b>Source:</b> CDSC, Francis Drummond & Co. Ltd | Latest available data</p>",
         unsafe_allow_html=True
     )
-html_title = """
-    <style>
-    .title-text{
-    font-weight:bold;
-    padding:5px;
-    border-radius:6px;
-    </style>
-    </style>
-    <center><h1 class= "title-text">
-    Kenya Pipeline Company IPO - Insights from Francis Drummond & Co. Ltd Investor Data
-    </h1></center>"""
-st.markdown("<style>div.block-container{padding-top:3rem;}</style>", unsafe_allow_html=True)
 
 with col2:
-    st.markdown(html_title, unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%; text-align: center;">
+            <h1 style="margin: 0; font-size: 2.5rem;">
+                Kenya Pipeline Company IPO - Insights from Francis Drummond & Co. Ltd Investor Data
+            </h1>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
 
 # Clean Next of kin column
 df1["N_K_Relationship"] = (
