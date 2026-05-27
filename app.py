@@ -534,7 +534,7 @@ with col10:
         )
         ax.set_title(
             "Distribution of KPC IPO Subscribers by Region",
-            fontsize=5,
+            fontsize=7,
             fontweight="bold"
         )
     ax.axis("off")
