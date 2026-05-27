@@ -43,6 +43,9 @@ Interactive Kenya map showing IPO subscription distribution across regions/count
 
 ## 📷 Dashboard Preview
 
+### IPO STATUS
+![KPIs](assets/status.png)
+
 ### 📊 KPI Dashboard
 ![KPIs](assets/KPIs.png)
 
