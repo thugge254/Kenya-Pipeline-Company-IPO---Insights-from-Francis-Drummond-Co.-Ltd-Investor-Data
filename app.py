@@ -72,7 +72,30 @@ with col2:
         """,
         unsafe_allow_html=True
     )
-    
+# Place this right after your title columns (col1, col2) and before the KPI metrics
+
+with st.container():
+    st.markdown(
+        """
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;
+          margin-bottom: 25px; border-left: 5px solid #0056b3;">
+            <h3 style="margin-top: 0; color: #111;">KPC IPO: A Landmark Success in Kenya’s Capital Markets</h3>
+            <p style="font-size: 17px; color: #333; line-height: 1.6;">
+                The KPC IPO was a significant success, achieving a <b>105.7% subscription rate</b> and raising 
+                <b>KES 112.3 billion</b> for the government, surpassing the initial target of KES 100–106 billion.
+            </p>
+            <p style="font-size: 15px; color: #333; line-height: 1.6;">
+                Francis Drummond & Co. Ltd served as a co-sponsoring broker throughout the process, playing a key role in this milestone.
+            </p>
+            <p style="font-size: 15px; color: #555; font-style: italic; margin-bottom: 0;">
+                The investor subscriptions generated a substantial volume of data.
+                Critically analysing this data can enable firms involved to operate in a data-driven environment.
+                This analysis will enhance their preparedness for future IPOs.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Clean Next of kin column
 df1["N_K_Relationship"] = (
